@@ -1,2 +1,2 @@
 # Leetcode
-Leetcode Problems Solving
+Leetcode Problems Solving (C / C++ / Python )
