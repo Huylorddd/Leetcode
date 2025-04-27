@@ -1,0 +1,16 @@
+int lengthOfLastWord(char* s) {
+    int count = 0;
+    int length = strlen(s) - 1;
+    int i = length;
+
+    while (i >= 0 && s[i] == ' ') {
+        i--;
+    }
+
+    while (i >= 0 && s[i] != ' ') {
+        i--;
+        count++;
+    }
+
+    return count;
+}
