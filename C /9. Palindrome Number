@@ -1,14 +1,30 @@
 bool isPalindrome(int x) {
 
+// For edge case: if the number is negative, we Return since the "minus symbol" always appears in left or right.
+//                if the last character is "0", we Return as the computer does not count the first character as Zero. For example: 0123210 --> 123210, that's why.
+
     if(x < 0 || (x != 0 && x % 10 == 0))
         return false;
 
+
+// Create "reverse" value to recreate the original from 'the right'.
+
     int reverse = 0;
+
+
+// We take the last character into the 'reverse' value, every single character we take from the right: ((the reverse value * 10) + the next-from-the-right character).
+// We also remove the right character of the original to compare them after escaping the while loop.
+// For example: (Original Value: 1221)     Value: 12 - Reverse: 12 
 
     while(reverse < x) {
         reverse = (reverse * 10) + (x % 10);
         x /= 10;
     }
+
+
+// There are two case, for instance: 1221 and 12321.
+// In the first case, so easy to recognize. The other we need to compare the 'original' and 'reverse' without "the middle character"
+// For example: 12321, original: 12 - reverse: 123. That's why we cut out the last character of the reverse so that they have the same amount of character.
 
     if (x == reverse || x == reverse / 10) return true;
     else return false;
