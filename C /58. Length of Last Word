@@ -1,12 +1,14 @@
 int lengthOfLastWord(char* s) {
     int count = 0;
-    int length = strlen(s) - 1;
+    int length = strlen(s) - 1;   // eliminate the last character of the string '\0'
     int i = length;
 
+// We create this while loop to skip all the empty/space value ' ' at last.
     while (i >= 0 && s[i] == ' ') {
         i--;
     }
 
+// Count the number of characters in string until the ' ' appears.
     while (i >= 0 && s[i] != ' ') {
         i--;
         count++;
