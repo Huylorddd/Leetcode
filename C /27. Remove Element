@@ -9,3 +9,14 @@ int removeElement(int* nums, int numsSize, int val) {
     }
     return k;
 }
+
+
+// EDGE CASE: if the array is empty, we return to avoid memory wasting.
+
+// So the problem told us to use in-place function, which modify directly to original data.
+// First, we need to create a 'k' value which stands for the number of how many values that's not equals the 'val'. Besides, the index of the new array that doesn't contain any 'val'.
+// We create a loop that checks for any 'val' digits in the array. If there is, the 'val' values will be skip. Otherwise, the 'k' index will plus one and the new array will update with the 'i' value at 'k' position.
+// Then, return k.
+
+// ILLUSTATION: (val = 2)
+// Original: [0][1][2][2][2][3]      (K = 3) fixed array: [0][1][3][_][_][_]
