@@ -1,0 +1,9 @@
+char nextGreatestLetter(char* letters, int lettersSize, char target) {
+   
+   for (int i = 0; i < lettersSize; i++) {
+    if (letters[i] > target) return letters[i];
+   }
+   return letters[0];
+}
+
+// I've used Linear Search in this case since it faster and have more memory efficient than Binary Search btw.
