@@ -7,14 +7,14 @@
  */
 
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
-    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));      // create a dummy pointer that points to the the value in l1 and l2.
     dummy->val = 0;
     dummy->next = NULL;
 
     struct ListNode* current = dummy;
-    int carry = 0;
+    int carry = 0;                                                                   // in case the sum of 2 values more than 10, that's why we need to add the 'carry'.
 
-    while (l1 || l2 || carry) {
+    while (l1 || l2 || carry) {                                                      // the func will sum the values till 1 of 2 lists is empty or the carry is still.
         int total = carry;
         if (l1) {
             total += l1->val;
