@@ -1,0 +1,17 @@
+int fib(int n){
+    if (n == 0) return 0;
+    if (n == 1 || n == 2) return 1;
+
+    int curr = 1,prev = 1,temp,i;
+    for (i = 3; i <= n; i++) {
+        temp = curr;
+        curr = curr + prev;
+        prev = temp;
+    }
+    return curr;
+}
+
+// Fibonacci numbers but we initialize and use loop for speed and memnory efficiency.
+// Recursive method:
+//
+// int fib(int n){ if(n==0)return 0;if(n==1)return 1;return fib(n-1)+fib(n-2);}
