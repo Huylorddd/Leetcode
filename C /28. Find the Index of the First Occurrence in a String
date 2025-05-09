@@ -1,0 +1,28 @@
+int strStr(char* haystack, char* needle) {
+    if (strlen(needle) > strlen(haystack) || *needle == '\0' || *haystack == '\0') return -1;      // EDGE CASES.
+    int haystack_len = strlen(haystack);
+    int needle_len = strlen(needle);
+
+    for(int i = 0; i <= haystack_len - needle_len; i++) {              // we check every substring (with length of 'needle'), every substring has 3 slot.
+        int j = 0;                                                     // using j every for loop to reset to 0 and start to check if 'substring' is equal every character of 'needle' ?
+                                                                          // if yes:    j++ till it's equal strlen(needle) and return i (starting point of every substring)
+        while (j < needle_len && needle[j] == haystack[i+j]) {            // otherwise: j will be reset, i (starting point of every substring) plus 1.
+            j++;                                                          // ILLUSTRATOR:   below
+            if  (j == needle_len) return i;
+        }
+    }
+    return -1;
+}
+
+// In this case, we can use directly length of a string: strlen(haystack) & strlen(needle) instead of initialize haystack_len & needle_len
+// for memory efficiency.
+// ILLUSTATOR:
+//     haystack = 'kaybutsad', needle = 'sad'
+//     i = 0 -> 'kay' (substring at i = 0)
+//               ^ j = 0 'k' - not match the 's' in needle - so reset k = 0, i++
+//
+//     i = 6 -> 'sad' (substring at i = 6)
+//               ^     j = 0 's' - match the 's' in needle - so k++
+//                ^    j = 1 'a' - match the 'a' in needle - so k++
+//                 ^   j = 2 'd' - match the 'd' in needle, j = 2 (3 if we skip the 0) equal to the strlen(needle) -> done -> return starting poing of the RIGHT substring 'i'.
+              
