@@ -11,7 +11,7 @@ int** generate(int numRows, int* returnSize, int** returnColumnSizes) {
     *returnColumnSizes = (int*)malloc(numRows * sizeof(int));             // allocate room for each row. fe: [[a],[b,c],[d,e,f]] ,..
                                                                           //                                   ^   ^       ^
     for (int i = 0; i < numRows; i++) {                                   // how many interations based on how many rows.
-        result[i] = (int*)malloc((i+1) * sizeof(int));                    // 'i' row has 'i+1' elements.
+        result[i] = (int*)malloc((i+1) * sizeof(int));                    // 'i' row has 'i+1' elements. (since FIRST ROW is start from 0).
         (*returnColumnSizes)[i] = i + 1;                                  // set the column size (or size of elements) for rows (rows[0] -> 1 room, rows[3] -> 4 rooms for example) .
                                                                             //          "since it's a triangle so the rooms of each row increase 1 for every rows".
 
