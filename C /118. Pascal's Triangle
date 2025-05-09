@@ -4,7 +4,7 @@
  * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
  */
 int** generate(int numRows, int* returnSize, int** returnColumnSizes) {
-    if (numRows == 0) return 0;                                           // FOR MEMORY EFFICIENCY: return 0 instead of NULL since '0' = 4 bits | 'NULL' = 8 bits.
+    if (numRows == 0) return 0;                                           // EDGE CASE - FOR MEMORY EFFICIENCY: return 0 instead of NULL since '0' = 4 bits | 'NULL' = 8 bits.
     *returnSize = numRows;                                                // return size of rows (or inner arrays) for an entire main array.
                                                                           //                                                                                                         v
     int **result = (int**)malloc(numRows * sizeof(int*));                 // allocate room for the entire triange (for example: the triangle has 1,2,3,6 or 9,... etc.. rows). fe: [[x],[x],[x],[x]]
