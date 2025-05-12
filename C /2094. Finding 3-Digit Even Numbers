@@ -1,0 +1,38 @@
+int compareInts(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b); // ascending order
+
+int* findEvenNumbers(int* digits, int digitsSize, int* returnSize) {
+    int* arr = (int*)malloc(900 * sizeof(int));
+    int count = 0;
+    bool seen[1000] = {false};
+
+    if(digitsSize == 0){
+        *returnSize = 0;
+        return 0;
+    }
+
+    for (int i = 0; i < digitsSize; i++) {
+        if (digits[i] == 0) continue;
+
+        for (int j = 0; j < digitsSize; j++) {
+            if (j == i) continue;
+
+            for (int k = 0; k < digitsSize; k++) {
+                if (k == i || k == j) continue;
+
+                int num = digits[i] * 100 + digits[j] * 10 + digits[k];
+                if (num % 2 != 0) continue; 
+                
+                if (seen[num] == false) {
+                    seen[num] = true;
+                    arr[count++] = num;
+                }
+            }
+        }
+    }  
+// After populating arr and count:
+qsort(arr, count, sizeof(int), compareInts);
+
+*returnSize = count;
+return arr;
+}
