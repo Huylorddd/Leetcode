@@ -1,17 +1,17 @@
 int compareInts(const void* a, const void* b) {
-    return (*(int*)a - *(int*)b); // ascending order
+    return (*(int*)a - *(int*)b);                  // ascending order
 
 int* findEvenNumbers(int* digits, int digitsSize, int* returnSize) {
-    int* arr = (int*)malloc(900 * sizeof(int));
+    int* arr = (int*)malloc(900 * sizeof(int));    // we initialize '900' as the 3-digits digits is between 100 and 999, so this size is very optimized.
     int count = 0;
-    bool seen[1000] = {false};
+    bool seen[1000] = {false};                     // this mean from seen[0] to seen[1000] is fulfiled by 'false' value, used to check duplicated numbers.
 
-    if(digitsSize == 0){
+    if(digitsSize == 0){                           // EDGE CASES: for memory efficiency.
         *returnSize = 0;
         return 0;
     }
 
-    for (int i = 0; i < digitsSize; i++) {
+    for (int i = 0; i < digitsSize; i++) {         // we've used 3 loops for 3 diff positions, that's why this algo is slower than others O(n^3). But it's still working :)
         if (digits[i] == 0) continue;
 
         for (int j = 0; j < digitsSize; j++) {
@@ -23,15 +23,15 @@ int* findEvenNumbers(int* digits, int digitsSize, int* returnSize) {
                 int num = digits[i] * 100 + digits[j] * 10 + digits[k];
                 if (num % 2 != 0) continue; 
                 
-                if (seen[num] == false) {
+                if (seen[num] == false) {            // 'bool seen' is used to check if the number is duplicated or not? -> continue / save the number.
                     seen[num] = true;
                     arr[count++] = num;
                 }
             }
         }
     }  
-// After populating arr and count:
-qsort(arr, count, sizeof(int), compareInts);
+
+qsort(arr, count, sizeof(int), compareInts);         // we use qsort here to sort the entire array by non-ascending order as needed.
 
 *returnSize = count;
 return arr;
