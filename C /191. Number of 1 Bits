@@ -1,0 +1,17 @@
+int hammingWeight(int n) {
+    if (n == 0) {              // edge cases: for memory efficiency.
+        return 0;
+    }
+    register int count = 0;    // register int: use CPU to get faster and more ME.
+    while(n>0) {               // use input argument directly, avoid redundancy variables.
+        if (n % 2 != 0) {
+            count++;
+        }
+        n /= 2;
+    }
+
+    return count;
+}
+
+// ME: memory efficiency
+// runtime: 0ms, memory 7.99mb --> BEST!
