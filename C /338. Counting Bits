@@ -1,0 +1,30 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* countBits(int n, int* returnSize) {
+    int* bits = (int*)malloc((n+1) * sizeof(int));
+    if (n == 0) {                                         //EDGE CASES (n = 0 or n = 1) return bits[0] or bits[0][1] for memory efficiency.
+        bits[0] = 0;                                      // avoid creating variables: count, temp and sum.
+        *returnSize = 1;                                  // *optional*
+        return bits;
+    }   else if (n == 1) {
+        bits[0] = 0, bits[1] = 1;
+        *returnSize = 2;
+        return bits;
+    }
+    
+    int i = 0;                                            // creating loop to SUM the BITS of every digit. (not RETURN the BITS).
+    for(i; i <= n; i++) {                                 // 'digit' value is stands for 'i' and be converted to binary and sum every bit of it.
+        int digit = i;                                    // we cannot use 'i' directly since 'i' is used to loop, not to be CONVERTED. And that's why we need to create a duplicated value like 'digit'
+        int temp, sum = 0;
+        while (digit > 0) {
+            temp = digit % 2;                             // 'temp' is every bit and we sum it up. ILLUSTRATOR: 5 -> 101 -> 1 + 0 + 1 = 2
+            sum += temp;
+            digit /= 2;
+        }
+        bits[i] = sum;
+    }
+
+    *returnSize = i;
+    return bits;
+}
