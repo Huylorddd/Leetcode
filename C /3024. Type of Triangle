@@ -1,0 +1,19 @@
+char* triangleType(int* nums, int numsSize) {
+    if (numsSize < 3) return "none";
+    if ((nums[0] + nums[1] <= nums[2]) || (nums[0] + nums[2] <= nums[1]) || (nums[1] + nums[2] <= nums[0]))
+        return "none";
+
+    if (nums[0] == nums[1] && nums[1] == nums[2]) return "equilateral";
+    if ((nums[0] == nums[1] && nums[0] != nums[2]) || (nums[0] == nums[2] && nums[0] != nums[1]) || (nums[1] == nums[2] && nums[1] != nums[0])) return "isosceles";
+    return "scalene";
+}
+
+// This exercise is based on "Foundation and Concepts about Triangle".
+/ /At first, we should eliminate two situations in here.
+  // 1. The triangle does not have enough 3 sides.
+  // 2. Sum of two sides is less than the other side.
+
+//Now the triangle should be normal, so we can continue to filt it into 3 types.
+  // equilateral: we have 3 sides equal.
+  // isosceles: we have 2 sides equal and one of them is NOT equal the third side.
+  // if the triangle isn't one of both types above so it is scalene.
