@@ -1,0 +1,25 @@
+int missingNumber(int* nums, int numsSize) {
+    if (numsSize == 0) return 0;                 // memory efficiency.
+    int xor = 0;                                 // initialize 'xor' to filt the missing number in the array. 
+
+    for (int i = 0; i < numsSize;i++) {          
+        xor ^= i + 1;                            
+        xor ^= nums[i];                          
+    }                                            
+    return xor;                                  
+}
+
+// if the array is not missing any number, the real length is [numsSize + 1], right?   --> we use 'len' for this.
+// so the "i" is loop from 0 -> len. Clearly: i = 0 -> 1 -> 2 -> 3 -> 4 -> 5.
+// for example array = [0,1,2,4,5]. The missing number is "3", right?
+
+// then we must know about XOR, if we XOR 2 duplicated values (like 2 and 2) -> the return XOR value is always 0.
+// more example: we XOR 2 lists [0,1,2] and [2,0,1] -> ^0 (list 1) then ^2 (list 2), ...etc -> the return XOR value is still 0, cause numbers in the both lists is the same. Duplicated numbers will be eliminated.
+
+// now turn back to our problem, we XOR 2 things:
+//      1. from 1 to n. (we skip 0 since xor = 0 already). we can call it the length of the array WITHOUT missing number.
+//      2. numbers in the array.
+//
+// ILLUSTATOR: ^1 -> ^nums[0]
+//             ^2 -> ^nums[1], ....etc
+// at the end, we eliminate all of duplicated numbers and remain the missing number, why? The array doesn't have the missing number, but the length has and it was "3".
