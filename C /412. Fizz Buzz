@@ -1,0 +1,22 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+char** fizzBuzz(int n, int* returnSize) {
+    char** answer = (char**)malloc(n*sizeof(char*));
+    for (int i = 0; i < n; i++) {
+        answer[i] = (char*)malloc(9);                       // "FizzBuzz" is 8 + '\0', we can add malloc for each situation for memory efficiency.
+      
+        if ((i+1) % 3 == 0 && (i+1) % 5 == 0) {
+            sprintf(answer[i] "FizzBuzz");
+        } else if ((i+1) % 3 == 0 && (i+1) % 5 != 0) {
+            sprintf(answer[i], "Fizz");
+        } else if ((i+1) % 3 != 0 && (i+1) % 5 == 0) {
+            sprintf(answer[i], "Buzz");
+        }  else {
+            sprintf(answer[i], "%d", i + 1);
+        } 
+    }
+
+    *returnSize = n;
+    return answer;
+}
