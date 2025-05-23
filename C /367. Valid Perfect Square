@@ -1,0 +1,13 @@
+bool isPerfectSquare(int num) {
+    int left = 1, right = num;                  // initialize two cursors for binary search.
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;    // mid finding algo to avoid overflow.
+        if (mid < num / mid) {                  // iterations to find the mid value.
+            left = mid + 1;                     // 
+        } else if (mid > num / mid) {           // 
+            right = mid - 1;                    // 
+        } else return mid * mid == num;         // since the mid may have fractional component, so we need to square to ensure whether it equals to 'num' (integer) ?
+    }
+    return false;
+}
