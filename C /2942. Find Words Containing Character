@@ -1,0 +1,20 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* findWordsContaining(char** words, int wordsSize, char x, int* returnSize) {
+    int* position = (int*)malloc(wordsSize * sizeof(int));
+    int n = 0;
+
+    for (int i = 0; i < wordsSize; i++) {
+        int j = 0;
+        while (words[i][j] != '\0') {        // scanning all the characters inside a word until it finds the character that equals to 'x'.
+            if (words[i][j] == x) {          // if the character inside the word of array equals to 'x' value -> then position will note the "position" of the word and move to the next word in the array.
+                position[n++] = i;
+                break;
+            }
+            j++;
+        }
+    }
+    *returnSize = n;
+    return position;
+}
