@@ -15,4 +15,7 @@ bool judgeCircle(char* moves) {
 
     if (x == 0 && y == 0) return true; // after moves if the robot return to the origin -> return true.
     return false;
+
+    // return x == 0 && y == 0         // ALTERNATIVE WAY (maybe get more memory efficiency).
+    
 }
