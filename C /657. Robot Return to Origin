@@ -1,0 +1,18 @@
+bool judgeCircle(char* moves) {
+    int x = 0;                         // for horizontal moves (LEFT and RIGHT)
+    int y = 0;                         // for vertical moves (UP and DOWN)
+
+    int i = 0;                         //  since we don't really know how many moves does the robot take,
+    while (moves[i] != '\0') {         // that's why we need a loop to calculate every move until it stops.
+        switch (moves[i]) {
+            case 'U': y++; break;
+            case 'D': y--; break;      //  note that the direction that the robot's facing is irrelevant,
+            case 'R': x++; break;      // so U/D or R/L can be set increment/decrement however you want to
+            case 'L': x--; break;      // so long as they're the same direction (UP/DOWN) - (RIGHT/LEFT).
+        }                              //                                        vertical    horizontal
+        i++;
+    }
+
+    if (x == 0 && y == 0) return true; // after moves if the robot return to the origin -> return true.
+    return false;
+}
