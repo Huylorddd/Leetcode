@@ -1,0 +1,18 @@
+int addDigits(int num) {
+    if (num < 10) return num;            // edge case: for memory efficiency.
+
+    int remainder, a = num, x = 0;
+
+    while (true) {                       // we create a infinity loop to sum all digits until the remaining is lower than 10 (1-digit)
+        while (a > 0) {
+        remainder = a % 10;
+        x += remainder;
+        a /= 10;
+        }
+     a = x;
+     x = 0;
+     if (a <= 9) break;
+    }
+
+    return a;
+}   
