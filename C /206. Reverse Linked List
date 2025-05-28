@@ -11,11 +11,11 @@ struct ListNode* reverseList(struct ListNode* head) {
     struct ListNode* current = head;  // create 3 nodes to work with the while loop below.
     struct ListNode* next = NULL;
 
-    while (current != NULL) {         // WHAT THIS FUNCTION ACTUALLY DO:         (assuming we're having 3 nodes)
-        next = current->next;         // save for moving to the next node since we modify the 'current->next' value right after.
-        current->next = prev;         // only modify the original "node->next". E.g: (1)->2->3->NULL to (3)->2->1->NULL.  / (number) <- this is the starting point (the head).
-        prev = current;               // move 'prev' value to the current (NULL -> 1 -> 2 -> 3).
-        current = next;               // move to the next node. (1 -> 2 -> 3)
+    while (current != NULL) {         // WHAT THIS FUNCTION ACTUALLY DO:         (assuming we're having 3 nodes)                                                                       v ACTUAL PROCESS v
+        next = current->next;         // save for moving to the next node since we modify the 'current->next' value right after.                                                       ( 2 -> 3 -> NULL )
+        current->next = prev;         // only modify the original "node->next". E.g: (1) -> 2 -> 3 -> NULL to (3) -> 2 -> 1 -> NULL.  / (number) <- this is the starting point (head). ( NULL -> 1 -> 2 ) *
+        prev = current;               // move 'prev' value to the current                                                                                                              ( 1 -> 2 -> 3 )
+        current = next;               // move to the next node.                                                                                                                        ( 2 -> 3 -> NULL )
     }
     return prev;                      // now the starting point (head) is the prev
 }
