@@ -8,7 +8,7 @@ int* createTargetArray(int* nums, int numsSize, int* index, int indexSize, int* 
 
     for (int i = 0; i < numsSize; i++) {
         for (int j = length; j > index[i]; j--) {
-            target[j] = target[j-1];                    // append a number at index[i] and shift all the values to the right side.
+            target[j] = target[j-1];                    // append nums[i] at index[i] of the 'target' and shift all the right-sided values to the right.
         }
         target[index[i]] = nums[i];
         length++;
