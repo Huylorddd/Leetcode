@@ -6,8 +6,9 @@
  * };
  */
 void deleteNode(struct ListNode* node) {
-    node->val = node->next->val;
-    node->next = node->next->next;
+    struct ListNode* temp = node->next;
+    node->val = temp->val;
+    node->next = temp->next;
 }
 // We DO NOT have any head node or previous node before the given node 'node'.
 // So, our approach is: when we catch the node 'node', we will overwrite it:  1. its value is overwritten by the value of the next node.
